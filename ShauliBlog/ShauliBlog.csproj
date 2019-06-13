@@ -154,22 +154,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="audio\blog intro.mp3" />
     <Content Include="Content\Blog.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\_Layout.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\blog_icon.png" />
+    <Content Include="Images\flower.png" />
+    <Content Include="Images\intro_background.png" />
+    <Content Include="Images\intro_flower.png" />
+    <Content Include="Images\intro_shauli.png" />
+    <Content Include="Images\nav_background.png" />
+    <Content Include="Images\rss.png" />
+    <Content Include="Images\sidebar_background.png" />
+    <Content Include="Images\sidebar_section_background.png" />
     <Content Include="Scripts\Blog.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="fonts\SansationLight.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

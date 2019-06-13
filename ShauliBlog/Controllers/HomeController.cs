@@ -33,5 +33,19 @@ namespace ShauliBlog.Controllers
 
             return View();
         }
+        
+        public ActionResult Archives()
+        {
+            ViewBag.Message = "Your archives page.";
+
+            return View();
+        }
+
+        public ActionResult Rss()
+        {
+            ViewBag.Message = "Your Rss page.";
+
+            return View();
+        }
     }
 }
