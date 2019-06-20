@@ -27,20 +27,6 @@ namespace ShauliBlog.Controllers
             return View();
         }
 
-        public ActionResult Blog()
-        {
-            ViewBag.Message = "Your blog page.";
-
-            return View();
-        }
-        
-        public ActionResult Archives()
-        {
-            ViewBag.Message = "Your archives page.";
-
-            return View();
-        }
-
         public ActionResult Rss()
         {
             ViewBag.Message = "Your Rss page.";

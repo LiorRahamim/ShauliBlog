@@ -1,13 +1,8 @@
-﻿/*------------------------------
-=BASIC SETUP
-------------------------------*/
-
-@font-face {
+﻿@font-face {
     font-family: "SansationLight";
     src: url('../fonts/SansationLight.woff') format("woff");
 }
 
-/* Makeshift CSS Reset */
 * {
     margin: 0;
     padding: 0;
@@ -15,9 +10,14 @@
     font-size: 16px;
 }
 
-/* Tell the browser to render HTML 5 elements as block */
-header, footer, section, aside, nav, article {
-    display: block;
+#content {
+    display: table;
+}
+
+#mainContent {
+    display: table-cell;
+    width: 620px;
+    padding-right: 22px;
 }
 
 body {
@@ -30,6 +30,10 @@ body {
 
 #headline {
     text-shadow: 3px 3px #DDDDDD;
+}
+
+header, footer, section, aside, nav, article {
+    display: block;
 }
 
 h1, h2 {
@@ -48,14 +52,10 @@ p {
     padding-bottom: 22px;
 }
 
-/*------------------------------
-=INTRODUCTION
-------------------------------*/
-
 #intro {
     position: relative;
     padding: 20px;
-    padding-left:40px;
+    padding-left: 40px;
     background-image: linear-gradient(#b4dd10, #467612);
     /* Background-size not implemented yet */
     -webkit-background-size: 100%;
@@ -94,35 +94,16 @@ p {
         -webkit-border-radius: 22px;
     }
 
-
-/*------------------------------
-=CONTENT AREA AND SIDEBAR LAYOUT
-------------------------------*/
-
-#content {
-    display: table;
-}
-
-#mainContent {
-    display: table-cell;
-    width: 620px;
-    padding-right: 22px;
-}
-
 aside {
     display: table-cell;
     width: 300px;
     background-image: linear-gradient(to right, #d7d7d7, rgb(230,230,230));
 }
 
-
-    /*------------------------------
-=SIDEBAR
-------------------------------*/
     aside section {
         margin: 22px 0 0 22px;
         padding: 11px 22px;
-        background-image: linear-gradient(to bottom right ,#d7d7d7, rgb(240,240,240));
+        background-image: linear-gradient(to bottom right,#d7d7d7, rgb(240,240,240));
         /* Border-radius not implemented yet */
         -moz-border-radius: 11px;
         -webkit-border-radius: 11px;
@@ -142,6 +123,58 @@ aside {
                 aside section ul li a:hover {
                     text-decoration: underline;
                 }
+
+footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #222;
+}
+
+    footer div {
+        display: table;
+        margin: 0 auto;
+        padding: 44px 0;
+        width: 940px;
+        color: #777;
+    }
+
+        footer div section {
+            display: table-cell;
+            width: 300px;
+        }
+
+        footer div #about, footer div #blogroll {
+            padding-right: 20px;
+        }
+
+    footer h3 {
+        color: #FFF;
+    }
+
+    footer a {
+        color: #999;
+    }
+
+        footer a:hover {
+            color: #FFF;
+            text-decoration: none;
+        }
+
+    footer ul {
+        margin: 0 0 0 40px;
+        list-style: square;
+        color: #565656;
+    }
+
+        footer ul li a {
+            display: block;
+        }
+
+
+
+
+
 
 /*------------------------------
 =BLOG POST
@@ -262,56 +295,3 @@ form {
         height: 100px;
         border: 1px solid #d7d7d7;
     }
-
-
-
-
-/*------------------------------
-=FOOTER
-------------------------------*/
-footer {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    background: #222;
-}
-
-    footer div {
-        display: table;
-        margin: 0 auto;
-        padding: 44px 0;
-        width: 940px;
-        color: #777;
-    }
-
-        footer div section {
-            display: table-cell;
-            width: 300px;
-        }
-
-        footer div #about, footer div #blogroll {
-            padding-right: 20px;
-        }
-
-    footer h3 {
-        color: #FFF;
-    }
-
-    footer a {
-        color: #999;
-    }
-
-        footer a:hover {
-            color: #FFF;
-            text-decoration: none;
-        }
-
-    footer ul {
-        margin: 0 0 0 40px;
-        list-style: square;
-        color: #565656;
-    }
-
-        footer ul li a {
-            display: block;
-        }
