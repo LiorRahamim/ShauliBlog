@@ -163,6 +163,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\_Layout.css" />
+    <Content Include="Content\_SideMenueBar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -210,6 +211,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Blog\Blog.cshtml" />
     <Content Include="Views\FanClub\FanClub.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_SideMenuBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
