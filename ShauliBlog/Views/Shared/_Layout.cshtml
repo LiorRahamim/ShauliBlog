@@ -3,24 +3,76 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Shauli's Blog</title>
-    <link href="@Url.Content("~/Content/_Layout.css")" rel="stylesheet" type="text/css" media="screen">
-    <link rel="shortcut icon" href="~/Images/blog_icon.png" />﻿
+    <title>Browser Page title</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="shortcut icon" href="~/Images/blog_icon.png" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    @Html.Partial("_Navbar");
-    <div class="container body-content">
+<body id="">
+    <header>
+        <text align="left"><h1>Ha-blog Shel Shauli</h1></text>
+        <audio autoplay>
+            <source src="~/audio/blog intro.mp3" type="audio/mpeg">
+        </audio>
+    </header>
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Blog", "Blog", "Blog")</li>
+            <li>@Html.ActionLink("Fan Club", "FanClub", "FanClub")</li>
+            <li>
+                <div id="transDemo2">                
+                    <div class="hover">
+                        <img src="~/Images/rss.png" width="30" height="30">
+                    </div>
+                </div>
+            </li>
+            <li class="subscribe"><a href="#">Subscribe via. RSS</a></li>
+        </ul>
+    </nav>
+    <section id="intro">
         <header>
-            <h1 id="headline">Ha-Blog Shel Shauli</h1>
+            <h2>Do you have questions for me?</h2>
         </header>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+        <img src="/images/intro_shauli.png" alt="Shauli" />
+    </section>
+    <div id="content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <aside>
+            <section>
+                <header>
+                    <h3>Categories</h3>
+                </header>
+                <ul>
+                    <li><a href="#">Lorem ipsum dolor</a></li>
+                    <li><a href="#">Sit amet consectetur</a></li>
+                    <li><a href="#">Adipisicing elit sed</a></li>
+                </ul>
+            </section>
+            <section>
+                <header>
+                    <h3>Archives</h3>
+                </header>
+                <ul>
+                    <li><a href="#">December 2008</a></li>
+                    <li><a href="#">January 2009</a></li>
+                    <li><a href="#">February 2009</a></li>
+                    <li><a href="#">March 2009</a></li>
+                </ul>
+            </section>
+        </aside>
     </div>
+    <footer>
+        <h3 align="center"><b>About</b></h3>
+        <div>
+            <section id="about">
+                All rights reserved to Lior Rahamim, Ofek Aziel and Guy Shuny. Copyright © 2019.      
+            </section>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
