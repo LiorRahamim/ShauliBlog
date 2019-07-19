@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShauliBlog.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace ShauliBlog.Controllers
 {
     public class FanClubController : Controller
     {
-        public ActionResult FanClub()
+        private FanDBContext db = new FanDBContext();
+
+        public ActionResult FansList()
         {
-            return View();
+            return View(db.Fans);
         }
     }
 }
