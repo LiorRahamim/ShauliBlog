@@ -1,4 +1,5 @@
-using System;
+﻿using System;
+using System.Web;
 
 namespace ShauliBlog.Models
 {
@@ -8,7 +9,7 @@ namespace ShauliBlog.Models
         public string name { get; set; }
         public string sn { get; set; }
         public string gender { get; set; }
-        public DateTime birthdat { get; set; }
+        public DateTime birthday { get; set; }
         public int clubSeniority { get; set; }
     }
 }
