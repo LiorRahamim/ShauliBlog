@@ -1,0 +1,49 @@
+@model ShauliBlog.Models.Fan
+
+@{
+    ViewBag.Title = "FansList";
+}
+
+<h2>Fans list</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clubSeniority)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var fan in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => fan.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => fan.sn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => fan.gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => fan.birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => fan.clubSeniority)
+        </td>
+    </tr>
+}
+</table>
