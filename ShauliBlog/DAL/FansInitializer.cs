@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace ShauliBlog.DAL
 {
-    public class FansInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<FanDBContext>
+    public class FansInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<BlogContext>
     {
-        protected override void Seed(FanDBContext context)
+        protected override void Seed(BlogContext context)
         {
             var fans = new List<Fan>
             {

@@ -14,8 +14,4 @@ namespace ShauliBlog.Models
         public DateTime birthday { get; set; }
         public int clubSeniority { get; set; }
     }
-    public class FanDBContext : DbContext
-    {
-        public DbSet<Fan> Fans { get; set; }
-    }
 }
