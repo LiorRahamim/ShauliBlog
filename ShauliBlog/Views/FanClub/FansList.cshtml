@@ -5,7 +5,6 @@
 }
 
 <h2>Fans list</h2>
-
 <table class="table">
     <tr>
         <th>
@@ -23,27 +22,34 @@
         <th>
             @Html.DisplayNameFor(model => model.clubSeniority)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var fan in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => fan.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => fan.sn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => fan.gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => fan.birthday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => fan.clubSeniority)
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => fan.name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => fan.sn)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => fan.gender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => fan.birthday)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => fan.clubSeniority)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "EditFan", new { id = fan.id })
+        @Html.ActionLink("Details", "FanDetails", new { id = fan.id })
+        @Html.ActionLink("Delete", "DeleteFanDetails", new { id = fan.id })
+    </td>
+</tr>
     }
 </table>
+<div>
+    @Html.ActionLink("Create New Fan", "CreateNewFan")
+</div>
