@@ -27,15 +27,15 @@
         </dd>
 
         <dt>
-        <dt>
             @Html.DisplayNameFor(model => model.gender)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.gender)
         </dd>
-        @Html.DisplayNameFor(model => model.birthday)
-        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.birthday)
+        </dt>
 
         <dd>
             @Html.DisplayFor(model => model.birthday)
@@ -50,4 +50,9 @@
         </dd>
 
     </dl>
+</div>
+
+
+<div>
+    @Html.ActionLink("back to list", "FansList", "FanClub")
 </div>
