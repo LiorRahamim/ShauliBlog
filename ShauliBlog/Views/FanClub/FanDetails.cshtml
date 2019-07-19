@@ -1,17 +1,53 @@
-﻿@{
-    Layout = null;
+﻿@model ShauliBlog.Models.Fan
+
+@{
+    ViewBag.Title = "FanDetails";
 }
 
-<!DOCTYPE html>
+<h2>Fan Details</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
-    </div>
-</body>
-</html>
+<div>
+    <h4>Fan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sn)
+        </dd>
+
+        <dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+        @Html.DisplayNameFor(model => model.birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clubSeniority)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clubSeniority)
+        </dd>
+
+    </dl>
+</div>

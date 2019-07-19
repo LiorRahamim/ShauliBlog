@@ -153,6 +153,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Fan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -209,10 +210,14 @@
     <Content Include="Views\Blog\Blog.cshtml" />
     <Content Include="Views\FanClub\FanClub.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\FanClub\FansList.cshtml" />
+    <Content Include="Views\FanClub\FanDetails.cshtml" />
+    <Content Include="Views\FanClub\EditFan.cshtml" />
+    <Content Include="Views\FanClub\DeleteFanDetails.cshtml" />
+    <Content Include="Views\FanClub\CreateNewFan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\trol\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
