@@ -82,6 +82,9 @@ namespace ShauliBlog.Controllers
             return RedirectToAction("FansList");
         }
 
+        /**
+         * Get method - used to display 'deleteFan' confirmation page
+         */
         public ActionResult DeleteFanDetails(int? id)
         {
             if (id == null)
@@ -94,6 +97,19 @@ namespace ShauliBlog.Controllers
                 return HttpNotFound();
             }
             return View(fan);
+        }
+
+        /**
+         * Post method - used when deleting a fan
+         */
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteFanDetails(int id)
+        {
+            Fan fan = db.Fans.Find(id);
+            db.Fans.Remove(fan);
+            db.SaveChanges();
+            return RedirectToAction("FansList");
         }
     }
 }
