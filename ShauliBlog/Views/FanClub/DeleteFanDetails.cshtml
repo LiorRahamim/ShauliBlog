@@ -1,0 +1,54 @@
+@model ShauliBlog.Models.Fan
+
+@{
+    ViewBag.Title = "deleteFanDetails";
+}
+
+<h2>Delete Fan Details</h2>
+
+<h3>You are going to delete fan details, are you sure you want to continue?</h3>
+<div>
+    <h4>Fan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clubSeniority)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clubSeniority)
+        </dd>
+
+    </dl>
+</div>
