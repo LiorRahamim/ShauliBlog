@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Web;
+using System.Data.Entity;
+
 
 namespace ShauliBlog.Models
 {
@@ -11,5 +13,9 @@ namespace ShauliBlog.Models
         public string gender { get; set; }
         public DateTime birthday { get; set; }
         public int clubSeniority { get; set; }
+    }
+    public class FanDBContext : DbContext
+    {
+        public DbSet<Fan> Fans { get; set; }
     }
 }
