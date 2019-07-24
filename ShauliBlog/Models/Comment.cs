@@ -13,7 +13,7 @@ namespace ShauliBlog.Models
         public int Id { get; set; }
 
         [Required]
-        public Post Post { get; set; }
+        public int PostId { get; set; }
 
         [Required]
         public string Title { get; set; }
