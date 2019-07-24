@@ -164,7 +164,7 @@
     <Compile Include="Controllers\FanClubController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\BlogContext.cs" />
-    <Compile Include="DAL\FansInitializer.cs" />
+    <Compile Include="DAL\DbInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

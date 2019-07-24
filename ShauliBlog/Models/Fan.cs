@@ -9,21 +9,21 @@ namespace ShauliBlog.Models
     public class Fan
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string sn { get; set; }
+        public string Sn { get; set; }
         
         [Required]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         [Required]
-        public string gender { get; set; }
+        public string Gender { get; set; }
 
         [Required]
-        public DateTime birthday { get; set; }
+        public DateTime Birthday { get; set; }
 
         [Required]
-        public int clubSeniority { get; set; }
+        public int ClubSeniority { get; set; }
     }
 }
