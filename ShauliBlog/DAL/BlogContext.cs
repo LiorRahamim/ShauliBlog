@@ -13,6 +13,10 @@ namespace ShauliBlog.DAL
 
         public DbSet<Fan> Fans { get; set; }
 
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
         // Prevents pluralized table naming (i.e, prevent the table name to be 'Fans')
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
