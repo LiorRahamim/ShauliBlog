@@ -28,7 +28,7 @@ namespace ShauliBlog.Models
         [Required]
         public string Content { get; set; }
 
-        public Image Image { get; set; } // the image should be in the sql server
+        public String Image { get; set; } // the image should be in the sql server
         
         public String Video { get; set; } // the video should be a link to youtube
 
