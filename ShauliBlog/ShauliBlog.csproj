@@ -167,8 +167,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\BlogContext.cs" />
     <Compile Include="DAL\FansInitializer.cs" />
-    <Compile Include="DAL\TryContext.cs" />
-    <Compile Include="DAL\TryInit.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
