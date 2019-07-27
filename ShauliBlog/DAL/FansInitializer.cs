@@ -41,6 +41,16 @@ namespace ShauliBlog.DAL
 
             posts.ForEach(post => context.Posts.Add(post));
             context.SaveChanges();
+
+
+            var comments = new List<Comment>
+            {
+            new Comment{Id=0, PostId=0, Title="Great Gob!", Author="May", AuthorSite="https://www.udemy.com/", Content="I love this post very much" },
+            new Comment{Id=1, PostId=1, Title="My website is better!", Author="Shmulik", AuthorSite="https://www.ebay.com/", Content="See my site" },
+            };
+
+            comments.ForEach(comment => context.Comments.Add(comment));
+            context.SaveChanges();
         }
         }
 }
