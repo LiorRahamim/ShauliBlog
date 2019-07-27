@@ -167,14 +167,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\BlogContext.cs" />
     <Compile Include="DAL\FansInitializer.cs" />
+    <Compile Include="DAL\TryContext.cs" />
+    <Compile Include="DAL\TryInit.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907212331171_CreatePostCommentFan.cs" />
-    <Compile Include="Migrations\201907212331171_CreatePostCommentFan.Designer.cs">
-      <DependentUpon>201907212331171_CreatePostCommentFan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Fan.cs" />
     <Compile Include="Models\Post.cs" />
@@ -256,11 +253,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907212331171_CreatePostCommentFan.resx">
-      <DependentUpon>201907212331171_CreatePostCommentFan.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
