@@ -13,7 +13,7 @@ namespace ShauliBlog.Controllers
 
         public ActionResult Blog()
         {
-            return View(db.Posts);
+            return View(db.Posts.ToList());
         }
     }
 }

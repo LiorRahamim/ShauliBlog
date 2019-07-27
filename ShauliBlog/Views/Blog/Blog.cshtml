@@ -11,8 +11,8 @@
                     <article class="blogPost">
                         <header>
                             <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-                            <h3>Posted on @Html.DisplayFor(modelItem => item.PublishDate) </h3>
-                            <h3>Posted by @Html.DisplayFor(modelItem => item.Author)</h3>
+                            <h3>Posted on @Html.DisplayFor(modelItem => item.PublishDate) by @Html.DisplayFor(modelItem => item.Author)</h3>
+                            <h5>@Html.DisplayFor(modelItem => item.Comments.Count) comments</h5>
                         </header>
                         <div>
                             <p>@Html.DisplayFor(modelItem => item.Content)</p>

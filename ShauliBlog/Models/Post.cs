@@ -32,6 +32,6 @@ namespace ShauliBlog.Models
         
         public String Video { get; set; } // the video should be a link to youtube
 
-        public List<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
