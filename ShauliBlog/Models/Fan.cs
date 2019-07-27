@@ -8,7 +8,7 @@ namespace ShauliBlog.Models
 {
     public class Fan
     {
-        // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]
