@@ -47,8 +47,10 @@ namespace ShauliBlog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Author,AuthorSite,PublishDate,Content,Image,Video")] Post post)
+        public ActionResult Create([Bind(Include = "Id,Title,Author,AuthorSite,Content,Image,Video")] Post post)
         {
+            post.PublishDate = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Posts.Add(post);

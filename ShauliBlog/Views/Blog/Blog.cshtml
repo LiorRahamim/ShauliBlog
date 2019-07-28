@@ -57,6 +57,8 @@
                 @Html.Partial("CreateComment", new ShauliBlog.Models.Comment { PostId = post.Id })
 
             }
+
+            @Html.ActionLink("View All Posts", "Index", "Posts")
         </div>
 
     </div>
