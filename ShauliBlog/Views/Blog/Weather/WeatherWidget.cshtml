@@ -32,27 +32,64 @@
                 return temp;
             }
 
-            // return weather by city
-            function getWeatherByCity(city) {
+            // update weather by city
+            function updateWeatherByCity(city) {
                 city.replace(" ","%20") // replace spaces because the api doesn't process them
                 let url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=ba2026bc54fa50d8b6537853222bd734';
                 let temp;
 
                 fetch(url)
                     .then(res => res.json())
-                    .then((out) => {
-                        console.log(out);
-                        weather = out.main.temp;
-                        weather = convertKelvinToCelsius(weather);
+                    .then((out) => { // out is full weather details
+                        temp = convertKelvinToCelsius(out.main.temp);
 
                         document.getElementById('city').innerHTML = out.name;
-                        document.getElementById('temperature').innerHTML = out.main.temp.toString();
+                        document.getElementById('temperature').innerHTML = temp.toString();
                     })
                     .catch(err => { throw err }); 
             }
 
-            getWeatherByCity("tel aviv");
+            // update weather by coordinates
+            function updateWeatherByCoordinates() {
 
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                    }
+                }
+
+                function showPosition(position) {
+                    console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                }
+
+                let latitude;
+                let longitude;
+
+                getLocation(); // update the coordinates
+                
+                latitude = 32;
+                longitude = 34;
+
+                let url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=ba2026bc54fa50d8b6537853222bd734';
+                let temp;
+
+                fetch(url)
+                    .then(res => res.json())
+                    .then((out) => { // out is full weather details
+                        temp = convertKelvinToCelsius(out.main.temp);
+
+                        document.getElementById('city').innerHTML = out.name;
+                        document.getElementById('temperature').innerHTML = temp.toString();
+                    })
+                    .catch(err => { throw err });
+            }
+
+            //updateWeatherByCity("tel aviv");
+            debugger;
+            updateWeatherByCoordinates();
+            
         </script>
     </div>
 </body>
