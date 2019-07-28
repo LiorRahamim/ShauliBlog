@@ -159,6 +159,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\Comments1Controller.cs" />
     <Compile Include="Controllers\FanClubController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
@@ -237,6 +238,11 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Blog\CreateComment.cshtml" />
+    <Content Include="Views\Comments1\Delete.cshtml" />
+    <Content Include="Views\Comments1\Details.cshtml" />
+    <Content Include="Views\Comments1\Edit.cshtml" />
+    <Content Include="Views\Comments1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

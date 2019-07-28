@@ -5,32 +5,32 @@
 <body>
     <div id="content">
         <div id="mainContent">
-            @foreach (var item in Model)
+            @foreach (var post in Model)
             {
                 <section>
                     <article class="blogPost">
                         <header>
-                            <h2>@Html.DisplayFor(modelItem => item.Title)</h2>
-                            <h3>Posted on @Html.DisplayFor(modelItem => item.PublishDate) by @Html.DisplayFor(modelItem => item.Author)</h3>
-                            <h5>@Html.DisplayFor(modelItem => item.Comments.Count) comments</h5>
+                            <h2>@Html.DisplayFor(modelItem => post.Title)</h2>
+                            <h4>Posted by @Html.DisplayFor(modelItem => post.Author) on @Html.DisplayFor(modelItem => post.PublishDate)</h4>
+                            <p>@Html.DisplayFor(modelItem => post.Comments.Count) comments</p>
                         </header>
                         <div>
-                            <p>@Html.DisplayFor(modelItem => item.Content)</p>
+                            <p>@Html.DisplayFor(modelItem => post.Content)</p>
 
                             <section>
 
-                                @if (!(item.Image.IsEmpty()))
+                                @if (!(post.Image.IsEmpty()))
                                 {
                                     <p>
-                                        <img class="alignright wp-image-102447 size-full" src="@Html.DisplayTextFor(modelItem => item.Image)" alt="" width="200" height="200" />
+                                        <img class="alignright wp-image-102447 size-full" src="@Html.DisplayTextFor(modelItem => post.Image)" alt="" width="200" height="200" />
                                     </p>
                                 }
 
 
-                                @if (!(item.Video.IsEmpty()))
+                                @if (!(post.Video.IsEmpty()))
                                 {
                                     <p>
-                                        <iframe src="@Url.Content(item.Video)" width="250" height="200"></iframe>
+                                        <iframe width="250" height="200" frameborder="0" src="@Url.Content(post.Video)"></iframe>
                                     </p>
                                 }
 
@@ -39,7 +39,25 @@
                         </div>
                     </article>
                 </section>
+                <section id="comments">
+                    <h3>Comments:</h3>
+                    @foreach (var comment in post.Comments)
+                    {
+                        <!--Shows the comments related to this post.-->
+                        <article>
+                            <header>
+                                <h4>Title: @Html.DisplayFor(modelItem => comment.Title)</h4>
+                                Posted by: <a href="@Url.Content(comment.AuthorSite)">@Html.DisplayFor(modelItem => comment.Author)</a>
+                            </header>
+                            <p>@Html.DisplayFor(modelItem => comment.Content)</p>
+                        </article>
+                    }
+                </section>
+
+                @Html.Partial("CreateComment", new ShauliBlog.Models.Comment { PostId = post.Id })
+
             }
         </div>
+
     </div>
 </body>
