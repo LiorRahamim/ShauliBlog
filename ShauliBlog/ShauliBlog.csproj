@@ -217,7 +217,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Blog\Weather\WeatherWidget.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -241,10 +240,11 @@
     <Content Include="Views\FanClub\EditFan.cshtml" />
     <Content Include="Views\FanClub\DeleteFanDetails.cshtml" />
     <Content Include="Views\FanClub\CreateNewFan.cshtml" />
-    <Content Include="Views\Blog\Weather\WeatherWidget.cshtml" />
+    <Content Include="Views\Shared\WeatherWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Blog\Weather\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
