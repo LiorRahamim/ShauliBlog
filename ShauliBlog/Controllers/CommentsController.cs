@@ -16,9 +16,14 @@ namespace ShauliBlog.Controllers
         private BlogContext db = new BlogContext();
 
         // GET: Comments
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var comments = db.Comments.Include(c => c.Post);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var comments = db.Comments.Include(c => c.Post).Where(c => c.PostId == id); ;
             return View(comments.ToList());
         }
 
@@ -34,31 +39,6 @@ namespace ShauliBlog.Controllers
             {
                 return HttpNotFound();
             }
-            return View(comment);
-        }
-
-        // GET: Comments/Create
-        public ActionResult Create()
-        {
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title");
-            return View();
-        }
-
-        // POST: Comments/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PostId,Title,Author,AuthorSite,Content")] Comment comment)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Comments.Add(comment);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comment.PostId);
             return View(comment);
         }
 
