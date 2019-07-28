@@ -25,6 +25,10 @@
 
         </label>
         <script>
+            /* this script updates the WeatherWidget html by asking the user for coordinates
+             * if something goes wrong
+              */
+              
             // api gets weather in kelvin, this function converts to celsius
             function convertKelvinToCelsius(temp) {
                 temp = temp - 273.15;
@@ -50,27 +54,7 @@
             }
 
             // update weather by coordinates
-            function updateWeatherByCoordinates() {
-
-                function getLocation() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(showPosition);
-                    }
-                }
-
-                function showPosition(position) {
-                    console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
-                    latitude = position.coords.latitude;
-                    longitude = position.coords.longitude;
-                }
-
-                let latitude;
-                let longitude;
-
-                getLocation(); // update the coordinates
-                
-                latitude = 32;
-                longitude = 34;
+            function updateWeatherByCoordinates(latitude, longitude) {
 
                 let url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&APPID=ba2026bc54fa50d8b6537853222bd734';
                 let temp;
@@ -86,10 +70,29 @@
                     .catch(err => { throw err });
             }
 
-            //updateWeatherByCity("tel aviv");
-            debugger;
-            updateWeatherByCoordinates();
+
+
+
+            function getCurrentPosition(updateWeatherByCoordinates) {
+
+                function getLocation() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(showPosition);
+                    }
+                }
+
+                function showPosition(position) {
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+                    updateWeatherByCoordinates(latitude, longitude);
+                }
+                
+                getLocation(); // update the coordinates
+              
+            }
             
+            getCurrentPosition(updateWeatherByCoordinates);
+
         </script>
     </div>
 </body>
