@@ -39,18 +39,22 @@
                         </div>
                     </article>
                 </section>
+
                 <section id="comments">
-                    <h3>Comments:</h3>
-                    @foreach (var comment in post.Comments)
-                    {
-                        <!--Shows the comments related to this post.-->
-                        <article>
-                            <header>
-                                <h4>Title: @Html.DisplayFor(modelItem => comment.Title)</h4>
-                                Posted by: <a href="@Url.Content(comment.AuthorSite)">@Html.DisplayFor(modelItem => comment.Author)</a>
-                            </header>
-                            <p>@Html.DisplayFor(modelItem => comment.Content)</p>
-                        </article>
+                    @if (post.Comments.Count != 0)
+                    { 
+                        <h3>Comments:</h3>
+                        foreach (var comment in post.Comments)
+                            {
+                                <!--Shows the comments related to this post.-->
+                                <article>
+                                    <header>
+                                        <h4>Title: @Html.DisplayFor(modelItem => comment.Title)</h4>
+                                        Posted by: <a href="@Url.Content(comment.AuthorSite)">@Html.DisplayFor(modelItem => comment.Author)</a>
+                                    </header>
+                                    <p>@Html.DisplayFor(modelItem => comment.Content)</p>
+                                </article>
+                            }
                     }
                 </section>
 

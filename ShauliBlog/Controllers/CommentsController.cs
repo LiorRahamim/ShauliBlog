@@ -48,9 +48,10 @@ namespace ShauliBlog.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Comment comment = db.Comments.Find(id);
+            var PostId = comment.PostId;
             db.Comments.Remove(comment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Comments", new { id = PostId });
         }
 
         protected override void Dispose(bool disposing)
