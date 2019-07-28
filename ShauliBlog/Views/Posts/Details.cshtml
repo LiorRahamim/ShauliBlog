@@ -7,66 +7,34 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@Html.DisplayFor(model => model.Title)</h2>
+                <h4>Posted by @Html.DisplayFor(model => model.Author) on @Html.DisplayFor(model => model.PublishDate)</h4>
+                <p>@Html.DisplayFor(model => model.Comments.Count) comments</p>
+            </header>
+            <div>
+                <p>@Html.DisplayFor(model => model.Content)</p>
+                <section>
+                    @if (!(Model.Image.IsEmpty()))
+                    {
+                        <p>
+                            <img class="alignright wp-image-102447 size-full" src="@Html.DisplayTextFor(model => model.Image)" alt="" width="200" height="200" />
+                        </p>
+                    }
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AuthorSite)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AuthorSite)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PublishDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PublishDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Video)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Video)
-        </dd>
-
-    </dl>
+                    @if (!(Model.Video.IsEmpty()))
+                    {
+                        <p>
+                            <iframe width="250" height="200" frameborder="0" src="@Url.Content(Model.Video)"></iframe>
+                        </p>
+                    }
+                </section>
+            </div>
+        </article>
+    </section>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
