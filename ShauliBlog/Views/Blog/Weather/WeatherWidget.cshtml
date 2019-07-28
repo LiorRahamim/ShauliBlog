@@ -8,14 +8,52 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
-    
+    <script src="~/Views/Blog/Weather/WeatherWidget.js"></script>
+
     @{
-        ViewBag.Title = "RadialTidyTree";
+        ViewBag.Title = "WeatherWidget";
     }
 </head>
 <body>
     <div>
-        srgs
+        temperature in 
+        <label id="city">
+
+        </label>
+        :
+        <label id="temperature">
+
+        </label>
+        <script>
+            // api gets weather in kelvin, this function converts to celsius
+            function convertKelvinToCelsius(temp) {
+                temp = temp - 273.15;
+                temp = Math.round(temp);
+                return temp;
+            }
+
+            // return weather by city
+            function getWeatherByCity(city) {
+                city.replace(" ","%20") // replace spaces because the api doesn't process them
+                let url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&APPID=ba2026bc54fa50d8b6537853222bd734';
+                let temp;
+
+                fetch(url)
+                    .then(res => res.json())
+                    .then((out) => {
+                        console.log(out);
+                        weather = out.main.temp;
+                        weather = convertKelvinToCelsius(weather);
+
+                        document.getElementById('city').innerHTML = out.name;
+                        document.getElementById('temperature').innerHTML = out.main.temp.toString();
+                    })
+                    .catch(err => { throw err }); 
+            }
+
+            getWeatherByCity("tel aviv");
+
+        </script>
     </div>
 </body>
 </html>
