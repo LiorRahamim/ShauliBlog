@@ -1,0 +1,42 @@
+﻿@model ShauliBlog.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@Html.DisplayFor(model => model.Title)</h2>
+                <h4>Posted by @Html.DisplayFor(model => model.Author) on @Html.DisplayFor(model => model.PublishDate)</h4>
+                <p>@Html.DisplayFor(model => model.Comments.Count) comments</p>
+            </header>
+            <div>
+                <p>@Html.DisplayFor(model => model.Content)</p>
+                <section>
+                    @if (!(Model.Image.IsEmpty()))
+                    {
+                        <p>
+                            <img class="alignright wp-image-102447 size-full" src="@Html.DisplayTextFor(model => model.Image)" alt="" width="200" height="200" />
+                        </p>
+                    }
+
+
+                    @if (!(Model.Video.IsEmpty()))
+                    {
+                        <p>
+                            <iframe width="250" height="200" frameborder="0" src="@Url.Content(Model.Video)"></iframe>
+                        </p>
+                    }
+                </section>
+            </div>
+        </article>
+    </section>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index", "Comments")
+</p>

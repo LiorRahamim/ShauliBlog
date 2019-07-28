@@ -12,8 +12,7 @@ namespace ShauliBlog.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
-        public Post Post { get; set; }
+        public int PostId { get; set; }
 
         [Required]
         public string Title { get; set; }
@@ -26,5 +25,7 @@ namespace ShauliBlog.Models
 
         [Required]
         public string Content { get; set; }
+
+        public virtual Post Post { get; set; }
     }
 }

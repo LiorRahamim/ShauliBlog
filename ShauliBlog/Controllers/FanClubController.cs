@@ -46,7 +46,7 @@ namespace ShauliBlog.Controllers
          */
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateNewFan([Bind(Include = "id,name,sn,gender,birthday,clubSeniority")] Fan fan)
+        public ActionResult CreateNewFan([Bind(Include = "ID,name,sn,gender,birthday,clubSeniority")] Fan fan)
         {
             db.Fans.Add(fan);
             db.SaveChanges();
@@ -75,7 +75,7 @@ namespace ShauliBlog.Controllers
          */
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditFan([Bind(Include = "id,name,sn,gender,birthday,clubSeniority")] Fan fan)
+        public ActionResult EditFan([Bind(Include = "ID,name,sn,gender,birthday,clubSeniority")] Fan fan)
         {
             db.Entry(fan).State = EntityState.Modified;
             db.SaveChanges();
