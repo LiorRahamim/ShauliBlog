@@ -240,6 +240,7 @@
     <Content Include="Views\FanClub\EditFan.cshtml" />
     <Content Include="Views\FanClub\DeleteFanDetails.cshtml" />
     <Content Include="Views\FanClub\CreateNewFan.cshtml" />
+    <Content Include="Views\Blog\Weather\WeatherWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
