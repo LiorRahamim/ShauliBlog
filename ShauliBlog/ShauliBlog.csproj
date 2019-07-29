@@ -190,6 +190,7 @@
     <Content Include="Images\intro_shauli.png" />
     <Content Include="Images\nav_background.png" />
     <Content Include="Images\rss.png" />
+    <Content Include="Images\shaulis_face.png" />
     <Content Include="Images\sidebar_background.png" />
     <Content Include="Images\sidebar_section_background.png" />
     <Content Include="Scripts\Blog.js" />
