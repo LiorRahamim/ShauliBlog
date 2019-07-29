@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet' />
+    @{
+        ViewBag.Title = "MapboxWidget";
+    }
+</head>
+<body>
+
+    <div>
+        <div id='map' style='width: 216px; height: 300px;'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoibGlvcnIiLCJhIjoiY2p5b3c3Z3h3MTI1ZTNucGVhdnBmMWhhNyJ9.mHzHCGroVjTZ4eNfmuIEnA';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                zoom: 5,
+                center: [35 , 32]
+            });
+        </script>
+
+    </div>
+</body>
+</html>
