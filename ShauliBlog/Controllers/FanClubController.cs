@@ -14,7 +14,7 @@ namespace ShauliBlog.Controllers
     {
         private BlogContext db = new BlogContext();
 
-        public ActionResult FansList()
+        public ActionResult FanList()
         {
             return View(db.Fans);
         }
@@ -50,7 +50,7 @@ namespace ShauliBlog.Controllers
         {
             db.Fans.Add(fan);
             db.SaveChanges();
-            return RedirectToAction("FansList");
+            return RedirectToAction("FanList");
         }
 
         /**
@@ -79,7 +79,7 @@ namespace ShauliBlog.Controllers
         {
             db.Entry(fan).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("FansList");
+            return RedirectToAction("FanList");
         }
 
         /**
@@ -109,7 +109,7 @@ namespace ShauliBlog.Controllers
             Fan fan = db.Fans.Find(id);
             db.Fans.Remove(fan);
             db.SaveChanges();
-            return RedirectToAction("FansList");
+            return RedirectToAction("FanList");
         }
     }
 }
