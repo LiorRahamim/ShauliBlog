@@ -9,30 +9,13 @@
 
     <meta name="viewport" content="width=device-width" />
     <title></title>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript" src="~/Views/Shared/graph.js"></script>
     @{
         ViewBag.Title = "StatisticsWidget";
     }
 </head>
 <body>
-    <canvas id="myChart" width="216" height="400"></canvas>
-    <script>
-        var riceData = {
-            labels: ["January", "February", "March", "April", "May", "June"],
-            datasets:
-                [
-                    {
-                        fillColor: "rgba(172,194,132,0.4)",
-                        strokeColor: "#ACC26D",
-                        pointColor: "#fff",
-                        pointStrokeColor: "#9DB86D",
-                        data: [203000, 15600, 99000, 25100, 30500, 24700]
-                    }
-                ]
-        }
-
-        var rice = document.getElementById('rice').getContext('2d');
-        new Chart(rice).Line(riceData);
-    </script>
+    <canvas id="rice" width="216" height="400"></canvas>
 </body>
 </html>
