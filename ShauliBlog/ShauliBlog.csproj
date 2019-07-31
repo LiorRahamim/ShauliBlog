@@ -201,6 +201,8 @@
     </Content>
     <Content Include="fonts\SansationLight.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -245,6 +247,7 @@
     <Content Include="Views\Shared\WeatherWidget.cshtml" />
     <Content Include="Views\Shared\TwitterWidget.cshtml" />
     <Content Include="Views\Shared\MapboxWidget.cshtml" />
+    <Content Include="Views\Shared\StatisticsWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
