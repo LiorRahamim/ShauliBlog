@@ -28,12 +28,12 @@
                 center: [35, 32]
             });
 
-
+            var shaulisAddressCoordinates = [35, 32];
 
             map.on('load', function () {
                 map.loadImage('/Images/shaulis_face.png', function (error, image) {
                     if (error) throw error;
-                    map.addImage('cat', image);
+                    map.addImage('shaulisFace', image);
                     map.addLayer({
                         "id": "points",
                         "type": "symbol",
@@ -45,13 +45,13 @@
                                     "type": "Feature",
                                     "geometry": {
                                         "type": "Point",
-                                        "coordinates": [35, 32]
+                                        "coordinates": shaulisAddressCoordinates
                                     }
                                 }]
                             }
                         },
                         "layout": {
-                            "icon-image": "cat",
+                            "icon-image": "shaulisFace",
                             "icon-size": 0.25
                         }
                     });
