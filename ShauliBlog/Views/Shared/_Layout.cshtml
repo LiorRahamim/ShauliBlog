@@ -23,7 +23,7 @@
             <li>@Html.ActionLink("Blog", "Blog", "Blog")</li>
             <li>@Html.ActionLink("Fan Club", "FanList", "FanClub")</li>
             <li>
-                <div id="transDemo2">                
+                <div id="transDemo2">
                     <div class="hover">
                         <img src="~/Images/rss.png" width="30" height="30">
                     </div>
@@ -48,7 +48,7 @@
             <section>
                 <header>
                     <h3>Weather!</h3>
-                </header>       
+                </header>
                 @RenderPage("~/Views/Shared/WeatherWidget.cshtml")
             </section>
             <section>
@@ -64,6 +64,12 @@
             </section>
             <section>
                 <header>
+                    <h3>Canvas</h3>
+                </header>
+                <canvas id="canvasExample" width="200" height="100" style="border:1px solid #d3d3d3;"></canvas>
+            </section>
+            <section>
+                <header>
                     <h3>More Comedy!</h3>
                 </header>
                 @RenderPage("~/Views/Shared/TwitterWidget.cshtml")
@@ -74,7 +80,7 @@
         <h3 align="center"><b>About</b></h3>
         <div>
             <section id="about">
-                All rights reserved to Lior Rahamim, Ofek Aziel, Idan Ahal and Guy Shuny. Copyright © 2019.      
+                All rights reserved to Lior Rahamim, Ofek Aziel, Idan Ahal and Guy Shuny. Copyright © 2019.
             </section>
         </div>
     </footer>
@@ -82,5 +88,13 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>      
+        var c = document.getElementById("canvasExample");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+    </script>
 </body>
 </html>
