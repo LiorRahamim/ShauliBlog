@@ -17,6 +17,10 @@
         <audio autoplay>
             <source src="~/audio/blog intro.mp3" type="audio/mpeg">
         </audio>
+        <div id="accounts-access" class="account" style="text-align: right">
+            <span> @Html.ActionLink("Register", "Register", "AccountManager")</span>
+            <span> @Html.ActionLink("Login", "Login", "AccountManager")</span>
+        </div>
     </header>
     <nav>
         <ul>
