@@ -190,6 +190,7 @@
     <Content Include="Images\intro_shauli.png" />
     <Content Include="Images\nav_background.png" />
     <Content Include="Images\rss.png" />
+    <Content Include="Images\shaulis_face.png" />
     <Content Include="Images\sidebar_background.png" />
     <Content Include="Images\sidebar_section_background.png" />
     <Content Include="Scripts\Blog.js" />
@@ -200,6 +201,8 @@
     </Content>
     <Content Include="fonts\SansationLight.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -210,6 +213,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\graph.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -243,6 +247,8 @@
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Shared\WeatherWidget.cshtml" />
     <Content Include="Views\Shared\TwitterWidget.cshtml" />
+    <Content Include="Views\Shared\MapboxWidget.cshtml" />
+    <Content Include="Views\Shared\StatisticsWidget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
