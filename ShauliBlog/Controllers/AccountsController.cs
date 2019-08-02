@@ -36,8 +36,8 @@ namespace ShauliBlog.Controllers
             return View(loginModel);
         }
 
-        // GET: Accounts/Create
-        public ActionResult Create()
+        // GET: Accounts/Login
+        public ActionResult Login()
         {
             return View();
         }

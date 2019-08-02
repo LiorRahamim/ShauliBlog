@@ -245,7 +245,7 @@
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Shared\WeatherWidget.cshtml" />
     <Content Include="Views\Shared\TwitterWidget.cshtml" />
-    <Content Include="Views\Accounts\Create.cshtml" />
+    <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Accounts\Delete.cshtml" />
     <Content Include="Views\Accounts\Details.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
