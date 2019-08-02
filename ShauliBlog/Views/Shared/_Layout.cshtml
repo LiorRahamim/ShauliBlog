@@ -18,8 +18,15 @@
             <source src="~/audio/blog intro.mp3" type="audio/mpeg">
         </audio>
         <div id="accounts-access" class="account" style="text-align: right">
-            <span> @Html.ActionLink("Register", "Register", "RegisterModels")</span>
-            <span> @Html.ActionLink("Login", "Login", "Accounts")</span>
+            @if (Request.IsAuthenticated)
+            {
+                <span> @Html.ActionLink("Logout", "Register", "RegisterModels")</span>
+            }
+            else
+            {
+                <span> @Html.ActionLink("Register", "Register", "RegisterModels")</span>
+                <span> @Html.ActionLink("Login", "Login", "Accounts")</span>
+            }
         </div>
     </header>
     <nav>
@@ -27,7 +34,7 @@
             <li>@Html.ActionLink("Blog", "Blog", "Blog")</li>
             <li>@Html.ActionLink("Fan Club", "FansList", "FanClub")</li>
             <li>
-                <div id="transDemo2">                
+                <div id="transDemo2">
                     <div class="hover">
                         <img src="~/Images/rss.png" width="30" height="30">
                     </div>
@@ -52,7 +59,7 @@
             <section>
                 <header>
                     <h3>Weather!</h3>
-                </header>       
+                </header>
                 @RenderPage("~/Views/Shared/WeatherWidget.cshtml")
             </section>
             <section>
@@ -78,7 +85,7 @@
         <h3 align="center"><b>About</b></h3>
         <div>
             <section id="about">
-                All rights reserved to Lior Rahamim, Ofek Aziel, Idan Ahal and Guy Shuny. Copyright © 2019.      
+                All rights reserved to Lior Rahamim, Ofek Aziel, Idan Ahal and Guy Shany. Copyright © 2019.
             </section>
         </div>
     </footer>

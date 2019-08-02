@@ -53,7 +53,7 @@ namespace ShauliBlog.Controllers
             {
                 db.RegisterModels.Add(registerModel);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Login", "Accounts");
             }
 
             return View(registerModel);
