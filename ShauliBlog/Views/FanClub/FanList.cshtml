@@ -42,12 +42,15 @@
     <td>
         @Html.DisplayFor(modelItem => fan.clubSeniority)
     </td>
-    <td>
-        @Html.ActionLink("Edit", "EditFan", new { ID = fan.ID })
-        @Html.ActionLink("Details", "FanDetails", new { ID = fan.ID })
-        @Html.ActionLink("Delete", "DeleteFanDetails", new { ID = fan.ID })
-    </td>
-</tr>
+    @if (User.IsInRole("Admin"))
+    {
+        <td>
+            @Html.ActionLink("Edit", "EditFan", new { ID = fan.ID })
+            @Html.ActionLink("Details", "FanDetails", new { ID = fan.ID })
+            @Html.ActionLink("Delete", "DeleteFanDetails", new { ID = fan.ID })
+        </td>
+    }
+    </tr>
     }
 </table>
 <div>
