@@ -22,6 +22,8 @@ namespace ShauliBlog.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<ShauliBlog.Models.LoginModel> LoginModels { get; set; }
     }
 
 }
