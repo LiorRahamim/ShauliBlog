@@ -95,7 +95,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    <script>      
+    <script>
         var c = document.getElementById("canvasExample");
         var ctx = c.getContext("2d");
         ctx.beginPath();
@@ -104,3 +104,5 @@
     </script>
 </body>
 </html>
+
+@Html.Partial("_LoginPartial")
