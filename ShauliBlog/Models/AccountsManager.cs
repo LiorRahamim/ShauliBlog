@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShauliBlog.Models
 {
     public class RegisterModel
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]
@@ -36,6 +38,7 @@ namespace ShauliBlog.Models
 
     public class ForgotPasswordModel
     {
+        [Key]
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]
@@ -71,6 +74,7 @@ namespace ShauliBlog.Models
 
     public class LoginModel
     {
+        [Key]
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]
