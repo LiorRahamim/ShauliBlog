@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 
 namespace ShauliBlog.DAL
 {
-    public class FansInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<BlogContext>
+    public class BlogInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<BlogContext>
     {
         protected override void Seed(BlogContext context)
         {
@@ -51,7 +51,7 @@ namespace ShauliBlog.DAL
             comments.ForEach(comment => context.Comments.Add(comment));
 
 
-            // adding idan, ofek, guy and lior as admins
+            // Adding idan, ofek, guy and lior as admins
             ApplicationDbContext accountsContext = new ApplicationDbContext();
             IdentityRole adminRole = new IdentityRole { Name = "Admin" };
             accountsContext.Roles.Add(adminRole);

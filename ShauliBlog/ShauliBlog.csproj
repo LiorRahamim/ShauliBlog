@@ -209,7 +209,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="DAL\BlogContext.cs" />
-    <Compile Include="DAL\FansInitializer.cs" />
+    <Compile Include="DAL\BlogInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
