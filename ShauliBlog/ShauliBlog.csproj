@@ -158,12 +158,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\Accounts\AccountsController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\FanClubController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\Accounts\RegisterModelsController.cs" />
     <Compile Include="DAL\BlogContext.cs" />
     <Compile Include="DAL\FansInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -250,6 +251,11 @@
     <Content Include="Views\Accounts\Details.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
+    <Content Include="Views\RegisterModels\Register.cshtml" />
+    <Content Include="Views\RegisterModels\Delete.cshtml" />
+    <Content Include="Views\RegisterModels\Details.cshtml" />
+    <Content Include="Views\RegisterModels\Edit.cshtml" />
+    <Content Include="Views\RegisterModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

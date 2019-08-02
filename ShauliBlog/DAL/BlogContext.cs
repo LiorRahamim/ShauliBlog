@@ -24,6 +24,8 @@ namespace ShauliBlog.DAL
         }
 
         public System.Data.Entity.DbSet<ShauliBlog.Models.LoginModel> LoginModels { get; set; }
+
+        public System.Data.Entity.DbSet<ShauliBlog.Models.RegisterModel> RegisterModels { get; set; }
     }
 
 }

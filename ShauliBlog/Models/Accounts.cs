@@ -5,7 +5,7 @@ namespace ShauliBlog.Models
 {
     public class RegisterModel
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]
