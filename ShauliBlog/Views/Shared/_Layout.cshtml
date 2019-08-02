@@ -19,6 +19,9 @@
 <body id="">
     <header>
         <text align="left"><h1>Ha-blog Shel Shauli</h1></text>
+        <div style="height: 50px">
+            @Html.Partial("_LoginPartial")
+        </div>
         <audio autoplay>
             <source src="~/audio/blog intro.mp3" type="audio/mpeg">
         </audio>
@@ -95,7 +98,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    <script>      
+    <script>
         var c = document.getElementById("canvasExample");
         var ctx = c.getContext("2d");
         ctx.beginPath();
@@ -104,3 +107,4 @@
     </script>
 </body>
 </html>
+

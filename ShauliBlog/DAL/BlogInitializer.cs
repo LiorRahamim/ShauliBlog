@@ -4,10 +4,12 @@ using System.Web;
 using System.Data.Entity;
 using ShauliBlog.Models;
 using System.Collections.Generic;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace ShauliBlog.DAL
 {
-    public class FansInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<BlogContext>
+    public class BlogInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<BlogContext>
     {
         protected override void Seed(BlogContext context)
         {
@@ -49,7 +51,57 @@ namespace ShauliBlog.DAL
             comments.ForEach(comment => context.Comments.Add(comment));
 
 
-            context.SaveChanges();
+            // Adding idan, ofek, guy and lior as admins
+            ApplicationDbContext accountsContext = new ApplicationDbContext();
+            IdentityRole adminRole = new IdentityRole { Name = "Admin" };
+            accountsContext.Roles.Add(adminRole);
+
+            var passwordHash = new PasswordHasher();
+            string guyPass = passwordHash.HashPassword("Gg1234!");
+            string ofekPass = passwordHash.HashPassword("Oo1234!");
+            string idanPass = passwordHash.HashPassword("Ii1234!");
+            string liorPass = passwordHash.HashPassword("Ll1234!");
+
+            ApplicationUser guy = new ApplicationUser { UserName = "guy@gmail.com", Email = "guy@gmail.com", PasswordHash = guyPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
+            ApplicationUser idan = new ApplicationUser { UserName = "idan@gmail.com", Email = "idan@gmail.com", PasswordHash = liorPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
+            ApplicationUser ofek = new ApplicationUser { UserName = "ofek@gmail.com", Email = "ofek@gmail.com", PasswordHash = idanPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
+            ApplicationUser lior = new ApplicationUser { UserName = "lior@gmail.com", Email = "lio@gmail.com", PasswordHash = ofekPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
+
+            accountsContext.Users.Add(guy);
+            accountsContext.Users.Add(idan);
+            accountsContext.Users.Add(lior);
+            accountsContext.Users.Add(ofek);
+
+            IdentityUserRole guyAdminRole = new IdentityUserRole()
+            {
+                RoleId = adminRole.Id,
+                UserId = guy.Id
+            };
+
+            IdentityUserRole idanAdminRole = new IdentityUserRole()
+            {
+                RoleId = adminRole.Id,
+                UserId = idan.Id
+            };
+
+            IdentityUserRole liorAdminRole = new IdentityUserRole()
+            {
+                RoleId = adminRole.Id,
+                UserId = lior.Id
+            };
+
+            IdentityUserRole ofekAdminRole = new IdentityUserRole()
+            {
+                RoleId = adminRole.Id,
+                UserId = ofek.Id
+            };
+
+            guy.Roles.Add(guyAdminRole);
+            idan.Roles.Add(idanAdminRole);
+            lior.Roles.Add(liorAdminRole);
+            ofek.Roles.Add(ofekAdminRole);
+
+            accountsContext.SaveChanges();
         }
-        }
+    }
 }
