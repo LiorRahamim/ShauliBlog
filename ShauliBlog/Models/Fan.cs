@@ -26,4 +26,10 @@ namespace ShauliBlog.Models
         [Required]
         public int clubSeniority { get; set; }
     }
+
+    public enum Gender
+    {
+        male,
+        female
+    }
 }
