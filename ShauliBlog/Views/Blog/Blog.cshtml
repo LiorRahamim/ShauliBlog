@@ -5,13 +5,13 @@
 <body>
     @using (Html.BeginForm())
     {    
-        <div class="col-md-6">
-            <h4>Filter posts:</h4>
-            Publisher: @Html.TextBox("authorField", "", new { placeholder= "Author", @class = "form-control col-md-2"})<br />
-            Blog Title: @Html.TextBox("blogTitleField", "", new { placeholder = "Blog Title", @class = "form-control col-md-2" })<br />
-            With Comments Published By: @Html.TextBox("commentsAuthorField", "", new { placeholder = "Comments Author", @class = "form-control col-md-2" })<br />
-            <input class="btn btn-primary" type="submit" value="search">
-        </div>
+    <div class="col-md-6">
+        <h4>Filter posts:</h4>
+        Author: @Html.TextBox("authorField", "", new { placeholder = "Author", @class = "form-control col-md-2" })<br />
+        Blog Title: @Html.TextBox("blogTitleField", "", new { placeholder = "Blog Title", @class = "form-control col-md-2" })<br />
+        Posts With Comments Published By: @Html.TextBox("commentsAuthorField", "", new { placeholder = "Comments Author", @class = "form-control col-md-2" })<br />
+        <input class="btn btn-primary" type="submit" value="search">
+    </div>
     }
     <div id="content">
         <div id="mainContent">
