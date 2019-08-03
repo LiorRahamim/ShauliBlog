@@ -21,6 +21,7 @@ namespace ShauliBlog.Models
         public string Author { get; set; }
 
         [Required]
+        [DataType(DataType.Url)]
         public string AuthorSite { get; set; }
 
         [Required]
