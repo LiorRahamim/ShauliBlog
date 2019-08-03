@@ -81,7 +81,10 @@
 
             }
 
-            @Html.ActionLink("Manage Posts", "Index", "Posts")
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Manage Posts", "Index", "Posts")
+            }
         </div>
 
     </div>
