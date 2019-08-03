@@ -30,7 +30,6 @@ namespace ShauliBlog.Models
     public enum Gender
     {
         male,
-        female,
-        all
+        female
     }
 }

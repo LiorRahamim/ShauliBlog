@@ -5,17 +5,17 @@
 }
 
 <h2>Fan list</h2>
-<!--
 @using (Html.BeginForm())
-{<!-- this form creates a search form that we can see the list of fans  -->
+{
 <div class="col-md-6">
     Fan Name: @Html.TextBox("fanName", "", new {placeholder="Fan Name", @class = "form-control col-md-2" }) <br />
-    Club Seniority: @Html.TextBox("clubSeniority","",new { placeholder="Club Sceniority", @class = "form-control col-md-6" }) <br />
+    Club Seniority: @Html.TextBox("clubSeniority", "",new { placeholder="Club Seniority", @class = "form-control col-md-6" }) <br />
     Gender: @Html.DropDownList("fanGender",new SelectList(Enum.GetValues(typeof(ShauliBlog.Models.Gender))),
                     "Select Gender", new { @class = "form-control col-md-6" }) <br />
-    <input type="submit" value="Filter" />
+    <input type="submit" value="Filter Fans" />
 </div>
 }
+
 <table class="table">
     <tr>
         <th>
