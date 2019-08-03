@@ -12,37 +12,44 @@ namespace ShauliBlog.Controllers
     {
         private BlogContext db = new BlogContext();
 
-        public ActionResult Blog()
+        public ActionResult Blog(String authorField, String blogTitleField, String commentsAuthorField)
         {
             List<Post> posts = db.Posts.ToList();
 
-            return View(db.Posts.ToList());
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult SearchPosts(String publisherField, String blogTitleField, Boolean commentsCheckBox)
-        {
-            List<Post> posts = db.Posts.ToList();       
-
-            if (!String.IsNullOrEmpty(publisherField))
+            if (!String.IsNullOrEmpty(authorField))
             {
-                posts = posts.Where(post => post.Author.Equals(publisherField)).ToList();                              
+                posts = posts.Where(post => post.Author.Equals(authorField)).ToList();
             }
             if (!String.IsNullOrEmpty(blogTitleField))
-            {              
+            {
                 posts = posts.Where(post => post.Title.Equals(blogTitleField)).ToList();
             }
-            if (commentsCheckBox)
+            if (!String.IsNullOrEmpty(commentsAuthorField))
             {
-                posts = posts.Where(post => post.Comments.ToList().Count > 0).ToList();
-            }
-            else
-            {
-                posts = posts.Where(post => post.Comments.ToList().Count == 0).ToList();
+                List<Post> postsCopy = posts.ToList();
+
+                foreach (Post post in postsCopy)
+                {
+                    if (!IsCommentAuthorExists(post, commentsAuthorField))
+                    {
+                        posts.Remove(post);
+                    }
+                }
             }
             
             return View(posts);
+        }  
+        
+        private bool IsCommentAuthorExists(Post post, String commentsAuthorField)
+        {
+            bool isCommentAuthorExists = true;
+
+            foreach (Comment comment in post.Comments)
+            {
+                isCommentAuthorExists = comment.Author.Equals(commentsAuthorField);
+            }
+
+            return isCommentAuthorExists;
         }
 
         [HttpPost]
