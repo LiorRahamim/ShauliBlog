@@ -14,7 +14,35 @@ namespace ShauliBlog.Controllers
 
         public ActionResult Blog()
         {
+            List<Post> posts = db.Posts.ToList();
+
             return View(db.Posts.ToList());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SearchPosts(String publisherField, String blogTitleField, Boolean commentsCheckBox)
+        {
+            List<Post> posts = db.Posts.ToList();       
+
+            if (!String.IsNullOrEmpty(publisherField))
+            {
+                posts = posts.Where(post => post.Author.Equals(publisherField)).ToList();                              
+            }
+            if (!String.IsNullOrEmpty(blogTitleField))
+            {              
+                posts = posts.Where(post => post.Title.Equals(blogTitleField)).ToList();
+            }
+            if (commentsCheckBox)
+            {
+                posts = posts.Where(post => post.Comments.ToList().Count > 0).ToList();
+            }
+            else
+            {
+                posts = posts.Where(post => post.Comments.ToList().Count == 0).ToList();
+            }
+            
+            return View(posts);
         }
 
         [HttpPost]
