@@ -11,17 +11,16 @@ using ShauliBlog.Models;
 
 namespace ShauliBlog.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PostsController : Controller
     {
         private BlogContext db = new BlogContext();
 
-        // GET: Posts
         public ActionResult Index()
         {
             return View(db.Posts.ToList());
         }
 
-        // GET: Posts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +35,6 @@ namespace ShauliBlog.Controllers
             return View(post);
         }
 
-        // GET: Posts/Create
         public ActionResult Create()
         {
             return View();
