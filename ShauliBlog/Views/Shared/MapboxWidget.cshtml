@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet' />
+    @{
+        ViewBag.Title = "MapboxWidget";
+    }
+</head>
+<body>
+
+    <div>
+        <div id='map' style='width: 216px; height: 300px;'></div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoibGlvcnIiLCJhIjoiY2p5b3c3Z3h3MTI1ZTNucGVhdnBmMWhhNyJ9.mHzHCGroVjTZ4eNfmuIEnA';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                zoom: 5,
+                center: [35, 32]
+            });
+
+            var shaulisAddressCoordinates = [35, 32];
+
+            map.on('load', function () {
+                map.loadImage('/Images/shaulis_face.png', function (error, image) {
+                    if (error) throw error;
+                    map.addImage('shaulisFace', image);
+                    map.addLayer({
+                        "id": "points",
+                        "type": "symbol",
+                        "source": {
+                            "type": "geojson",
+                            "data": {
+                                "type": "FeatureCollection",
+                                "features": [{
+                                    "type": "Feature",
+                                    "geometry": {
+                                        "type": "Point",
+                                        "coordinates": shaulisAddressCoordinates
+                                    }
+                                }]
+                            }
+                        },
+                        "layout": {
+                            "icon-image": "shaulisFace",
+                            "icon-size": 0.25
+                        }
+                    });
+                });
+            });
+
+
+
+
+        </script>
+
+    </div>
+</body>
+</html>

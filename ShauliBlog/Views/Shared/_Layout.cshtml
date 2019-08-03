@@ -7,6 +7,11 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+
+    <script src="~/Scripts/graph.js"></script>
     <script src="~/Scripts/_Layout.js"></script>
     <link rel="shortcut icon" href="~/Images/blog_icon.png" />
     @Styles.Render("~/Content/css")
@@ -15,6 +20,9 @@
 <body id="">
     <header>
         <text align="left"><h1>Ha-blog Shel Shauli</h1></text>
+        <div style="height: 50px">
+            @Html.Partial("_LoginPartial")
+        </div>
         <audio autoplay>
             <source src="~/audio/blog intro.mp3" type="audio/mpeg">
         </audio>
@@ -54,14 +62,15 @@
             </section>
             <section>
                 <header>
-                    <h3>Archives</h3>
+                    <h3>Map!</h3>
                 </header>
-                <ul>
-                    <li><a href="#">December 2008</a></li>
-                    <li><a href="#">January 2009</a></li>
-                    <li><a href="#">February 2009</a></li>
-                    <li><a href="#">March 2009</a></li>
-                </ul>
+                @RenderPage("~/Views/Shared/MapboxWidget.cshtml")
+            </section>
+            <section>
+                <header>
+                    <h3>Charts!</h3>
+                </header>
+                @RenderPage("~/Views/Shared/StatisticsWidget.cshtml")
             </section>
             <section>
                 <header>
