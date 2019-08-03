@@ -88,13 +88,5 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-    <script>      
-        var c = document.getElementById("canvasExample");
-        var ctx = c.getContext("2d");
-        ctx.beginPath();
-        ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-        ctx.stroke();
-    </script>
 </body>
 </html>
