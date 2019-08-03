@@ -3,25 +3,18 @@
     ViewBag.Title = "Blog";
 }
 <body>
-    <form id="search">
-        <div id="filters" class="row">
+    @using (Html.BeginForm("SearchPosts", "Blog", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-md-6">
             <h4>Filter posts:</h4>
-            <div id="date" class="col-md-4">
-                From <input id="start-date-field" class="form-control" type="date" />
-            </div>
-            <div id="publisher" class="col-md-4">
-                Publisher <input id="publisher-field" type="text" class="form-control" placeholder="Enter publisher name" />
-            </div>
-            <div id="blog-title" class="col-md-4">
-                Blog Title <input id="blog-title-field" type="text" class="form-control" placeholder="Enter blog title" />
-            </div>
+            Publisher: @Html.TextBox("publisherField", "", new { placeholder="Publisher", @class = "form-control col-md-2"})<br />
+            Blog Title: @Html.TextBox("blogTitleField", "", new { placeholder = "Blog Title", @class = "form-control col-md-2" })<br />
+            With Comments: @Html.CheckBox("commentsCheckBox")<br />
+            <input class="btn btn-primary" type="submit" value="search">
         </div>
-        <div id="search-btn" class="row">
-            <div class="col-md-4">
-                <input class="btn btn-primary" type="submit" onclick="filterPosts()" value="search">
-            </div>
-        </div>
-    </form>
+    }
     <div id="content">
         <div id="mainContent">
             @foreach (var post in Model)
@@ -83,6 +76,5 @@
 
             @Html.ActionLink("View All Posts", "Index", "Posts")
         </div>
-
     </div>
 </body>
