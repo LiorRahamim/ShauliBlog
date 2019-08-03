@@ -192,7 +192,6 @@
     <Content Include="Images\rss.png" />
     <Content Include="Images\sidebar_background.png" />
     <Content Include="Images\sidebar_section_background.png" />
-    <Content Include="Scripts\Blog.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
