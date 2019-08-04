@@ -42,9 +42,10 @@
                     .then(res => res.json())
                     .then((out) => { // out is full weather details
                         temp = convertKelvinToCelsius(out.main.temp);
-
-                        document.getElementById('city').innerHTML = out.name;
-                        document.getElementById('temperature').innerHTML = temp.toString();
+                        $(document).ready(function () {
+                            document.getElementById('city').innerHTML = out.name;
+                            document.getElementById('temperature').innerHTML = temp.toString();
+                        })
                     })
                     .catch(err => { throw err });
             }
@@ -59,9 +60,10 @@
                     .then(res => res.json())
                     .then((out) => { // out is full weather details
                         temp = convertKelvinToCelsius(out.main.temp);
-
-                        document.getElementById('city').innerHTML = out.name;
-                        document.getElementById('temperature').innerHTML = temp.toString();
+                        $(document).ready(function () {
+                            document.getElementById('city').innerHTML = out.name;
+                            document.getElementById('temperature').innerHTML = temp.toString();
+                        })
                     })
                     .catch(err => { throw err });
             }
