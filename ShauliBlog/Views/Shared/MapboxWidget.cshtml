@@ -29,35 +29,35 @@
             });
 
             var shaulisAddressCoordinates = [35, 32];
-
-            map.on('load', function () {
-                map.loadImage('/Images/shaulis_face.png', function (error, image) {
-                    if (error) throw error;
-                    map.addImage('shaulisFace', image);
-                    map.addLayer({
-                        "id": "points",
-                        "type": "symbol",
-                        "source": {
-                            "type": "geojson",
-                            "data": {
-                                "type": "FeatureCollection",
-                                "features": [{
-                                    "type": "Feature",
-                                    "geometry": {
-                                        "type": "Point",
-                                        "coordinates": shaulisAddressCoordinates
-                                    }
-                                }]
+            $(document).ready(function () {
+                map.on('load', function () {
+                    map.loadImage('/Images/shaulis_face.png', function (error, image) {
+                        if (error) throw error;
+                        map.addImage('shaulisFace', image);
+                        map.addLayer({
+                            "id": "points",
+                            "type": "symbol",
+                            "source": {
+                                "type": "geojson",
+                                "data": {
+                                    "type": "FeatureCollection",
+                                    "features": [{
+                                        "type": "Feature",
+                                        "geometry": {
+                                            "type": "Point",
+                                            "coordinates": shaulisAddressCoordinates
+                                        }
+                                    }]
+                                }
+                            },
+                            "layout": {
+                                "icon-image": "shaulisFace",
+                                "icon-size": 0.25
                             }
-                        },
-                        "layout": {
-                            "icon-image": "shaulisFace",
-                            "icon-size": 0.25
-                        }
+                        });
                     });
                 });
-            });
-
+            })
 
 
 
