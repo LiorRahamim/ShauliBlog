@@ -229,7 +229,6 @@
     <Content Include="Images\shaulis_face.png" />
     <Content Include="Images\sidebar_background.png" />
     <Content Include="Images\sidebar_section_background.png" />
-    <Content Include="Scripts\Blog.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -295,7 +294,10 @@
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Scripts\graph.js" />
-    <Content Include="Web.config" />
+    <Content Include="Scripts\_Layout.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
