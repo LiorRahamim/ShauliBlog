@@ -12,9 +12,44 @@ namespace ShauliBlog.Controllers
     {
         private BlogContext db = new BlogContext();
 
-        public ActionResult Blog()
+        public ActionResult Blog(String authorField, String blogTitleField, String commentsAuthorField)
         {
-            return View(db.Posts.ToList());
+            List<Post> posts = db.Posts.ToList();
+
+            if (!String.IsNullOrEmpty(authorField))
+            {
+                posts = posts.Where(post => post.Author.Equals(authorField)).ToList();
+            }
+            if (!String.IsNullOrEmpty(blogTitleField))
+            {
+                posts = posts.Where(post => post.Title.Equals(blogTitleField)).ToList();
+            }
+            if (!String.IsNullOrEmpty(commentsAuthorField))
+            {
+                List<Post> postsCopy = posts.ToList();
+
+                foreach (Post post in postsCopy)
+                {
+                    if (!IsCommentAuthorExists(post, commentsAuthorField))
+                    {
+                        posts.Remove(post);
+                    }
+                }
+            }
+            
+            return View(posts);
+        }  
+        
+        private bool IsCommentAuthorExists(Post post, String commentsAuthorField)
+        {
+            bool isCommentAuthorExists = true;
+
+            foreach (Comment comment in post.Comments)
+            {
+                isCommentAuthorExists = comment.Author.Equals(commentsAuthorField);
+            }
+
+            return isCommentAuthorExists;
         }
 
         [HttpPost]

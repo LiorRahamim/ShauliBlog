@@ -5,6 +5,17 @@
 }
 
 <h2>Fan list</h2>
+@using (Html.BeginForm())
+{
+<div class="col-md-6">
+    Fan Name: @Html.TextBox("fanName", "", new {placeholder="Fan Name", @class = "form-control col-md-2" }) <br />
+    Club Seniority: @Html.TextBox("clubSeniority", "",new { placeholder="Club Seniority", @class = "form-control col-md-6" }) <br />
+    Gender: @Html.DropDownList("fanGender",new SelectList(Enum.GetValues(typeof(ShauliBlog.Models.Gender))),
+                    "Select Gender", new { @class = "form-control col-md-6" }) <br />
+    <input type="submit" value="Filter Fans" />
+</div>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -26,31 +37,31 @@
 
     @foreach (var fan in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => fan.name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => fan.sn)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => fan.gender)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => fan.birthday)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => fan.clubSeniority)
-    </td>
-    @if (User.IsInRole("Admin"))
-    {
-        <td>
-            @Html.ActionLink("Edit", "EditFan", new { ID = fan.ID })
-            @Html.ActionLink("Details", "FanDetails", new { ID = fan.ID })
-            @Html.ActionLink("Delete", "DeleteFanDetails", new { ID = fan.ID })
-        </td>
-    }
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => fan.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => fan.sn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => fan.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => fan.birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => fan.clubSeniority)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "EditFan", new { ID = fan.ID })
+                    @Html.ActionLink("Details", "FanDetails", new { ID = fan.ID })
+                    @Html.ActionLink("Delete", "DeleteFanDetails", new { ID = fan.ID })
+                </td>
+            }
+        </tr>
     }
 </table>
 <div>
