@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace ShauliBlog.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class StatisticsController : Controller
     {
         private BlogContext db = new BlogContext();

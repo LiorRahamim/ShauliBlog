@@ -39,7 +39,11 @@
                 </div>
             </li>
             <li class="subscribe"><a href="#">Subscribe via. RSS</a></li>
-        </ul>
+            @if (User.IsInRole("Admin"))
+            {
+                <li>@Html.ActionLink("Statistics", "Index", "Statistics")</li>
+            }
+            </ul>
     </nav>
     <section id="intro">
         <header>
