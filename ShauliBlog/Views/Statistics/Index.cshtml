@@ -19,8 +19,6 @@
 
 <!-- Retrieving comments number by author, orginizing the data in a table -->
 <script>
-    var authorsArray;
-    var commentsNumberArray;
     $(function getCommentsNumberByAuthor() {
         $(document).ready(function () {
             $.ajax({
@@ -29,8 +27,9 @@
                 url: "/Statistics/getCommentsNumberByAuthor",
                 success: function (data) {
                     if (data.length > 0) {
+                        // Initializing arrays
                         let rowsArray = [];
-                        var riceData = {
+                        let commentsByAuthorData = {
                             labels: [],
                             datasets:
                                 [
@@ -45,25 +44,16 @@
                                 ]
                         }
 
-                        for (var i = 0; i < data.length; i++) { 
-                            // Creating a new table row 
-                            rowsArray.push("<tr>");
-                            rowsArray.push("<td>" + data[i].authorName + "</td>");
-                            rowsArray.push("<td>" + data[i].commentsNumber + "</td>");
-                            rowsArray.push("</tr>");
-
-                            // Used when presenting statistics chart
-                            riceData.labels.push(data[i].authorName);
-                            riceData.datasets[0].data.push(data[i].commentsNumber);
-                        }
+                        parseServerData(data, rowsArray, commentsByAuthorData);
 
                         // Appending data to table
                         $("#commentsByAuthorTable").append(rowsArray);
 
+                        // Creating chart
                         var commentsChart = document.getElementById('commentsNumByAuthPie').getContext('2d');
                         new Chart(commentsChart, {
                             type: 'line',
-                            data: riceData,
+                            data: commentsByAuthorData,
                         });
                     }
                 },
@@ -74,4 +64,19 @@
             });
         })
     })
+
+
+    function parseServerData(data, rowsArray, commentsByAuthorData) {
+        for (var i = 0; i < data.length; i++) { 
+            // Creating a new table row 
+            rowsArray.push("<tr>");
+            rowsArray.push("<td>" + data[i].authorName + "</td>");
+            rowsArray.push("<td>" + data[i].commentsNumber + "</td>");
+            rowsArray.push("</tr>");
+
+            // Used when presenting statistics chart
+            commentsByAuthorData.labels.push(data[i].authorName);
+            commentsByAuthorData.datasets[0].data.push(data[i].commentsNumber);
+        }
+    }
 </script>
