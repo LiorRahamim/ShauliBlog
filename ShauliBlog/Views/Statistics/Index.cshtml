@@ -1,7 +1,7 @@
 ﻿<div>
     <h1> Statistics & Management</h1>
     <div id="commentsNumByAuthorContainer">
-        <h3> Commnets Number By Author</h3>
+        <h3> Posts Number By Author</h3>
         <table id="commentsByAuthorTable">
             <thead>
                 <tr>
@@ -13,6 +13,13 @@
             <tbody></tbody>
         </table>
         <canvas id="commentsNumByAuthPie" width="200" height="100"></canvas>
+
+        <br />
+        <br />
+        <br />
+
+        <h3>Number Of Comments Per Post</h3>
+        <canvas id="commentsPerPost"></canvas>
     </div>
 </div>
 
@@ -84,6 +91,40 @@
 
     $.post("/Statistics/CommentsPerPost", function (data) {
         debugger;
+
+        var titles = [];
+        var counters = [];
+        
+        for (var i = 0; i < data.length; i++) {
+            titles.push(data[i].PostTitle);
+            counters.push(data[i].NumberOfComments);
+        }
+
+        var pieData = {
+            labels: titles,
+            datasets:
+                [
+                    {
+                        label: 'Comments Per Post',
+                        fillColor: "rgba(172,194,132,0.4)",
+                        strokeColor: "#ACC26D",
+                        pointColor: "#fff",
+                        pointStrokeColor: "#9DB86D",
+                        data: counters,
+                        backgroundColor: ['rgba(205, 0, 0, 0.1)', 'rgba(0, 69, 123, 0.1)', 'rgba(0, 100, 123, 0.1)', 'rgba(0, 0, 123, 0.1)']
+                    }
+                ]
+        }
+
+
+        $(document).ready(function () {
+            var pie = document.getElementById('commentsPerPost').getContext('2d');
+            new Chart(pie, {
+                type: 'doughnut',
+                data: pieData,
+            });
+        })
+
         console.log(data);
     });
 </script>
