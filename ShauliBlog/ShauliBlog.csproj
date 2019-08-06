@@ -204,7 +204,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
-    <Compile Include="Controllers\FanClubController.cs" />
+    <Compile Include="Controllers\FansController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
@@ -271,6 +271,11 @@
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Blog\TopPost.cshtml" />
     <Content Include="Views\Blog\PartialTopPost.cshtml" />
+    <Content Include="Views\Fans\Create.cshtml" />
+    <Content Include="Views\Fans\Delete.cshtml" />
+    <Content Include="Views\Fans\Details.cshtml" />
+    <Content Include="Views\Fans\Edit.cshtml" />
+    <Content Include="Views\Fans\Index.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -322,11 +327,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Blog\Blog.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
-    <Content Include="Views\FanClub\FanList.cshtml" />
-    <Content Include="Views\FanClub\FanDetails.cshtml" />
-    <Content Include="Views\FanClub\EditFan.cshtml" />
-    <Content Include="Views\FanClub\DeleteFanDetails.cshtml" />
-    <Content Include="Views\FanClub\CreateNewFan.cshtml" />
     <Content Include="Views\Posts\Create.cshtml" />
     <Content Include="Views\Posts\Delete.cshtml" />
     <Content Include="Views\Posts\Details.cshtml" />
