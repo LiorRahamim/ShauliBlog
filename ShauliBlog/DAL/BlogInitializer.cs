@@ -70,9 +70,9 @@ namespace ShauliBlog.DAL
             string liorPass = passwordHash.HashPassword("Ll1234!");
 
             ApplicationUser guy = new ApplicationUser { UserName = "guy@gmail.com", Email = "guy@gmail.com", PasswordHash = guyPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
-            ApplicationUser idan = new ApplicationUser { UserName = "idan@gmail.com", Email = "idan@gmail.com", PasswordHash = liorPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
-            ApplicationUser ofek = new ApplicationUser { UserName = "ofek@gmail.com", Email = "ofek@gmail.com", PasswordHash = idanPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
-            ApplicationUser lior = new ApplicationUser { UserName = "lior@gmail.com", Email = "lio@gmail.com", PasswordHash = ofekPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
+            ApplicationUser idan = new ApplicationUser { UserName = "idan@gmail.com", Email = "idan@gmail.com", PasswordHash = idanPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
+            ApplicationUser ofek = new ApplicationUser { UserName = "ofek@gmail.com", Email = "ofek@gmail.com", PasswordHash = ofekPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
+            ApplicationUser lior = new ApplicationUser { UserName = "lior@gmail.com", Email = "lio@gmail.com", PasswordHash = liorPass, SecurityStamp = Guid.NewGuid().ToString(), LockoutEnabled = true };
 
             accountsContext.Users.Add(guy);
             accountsContext.Users.Add(idan);
