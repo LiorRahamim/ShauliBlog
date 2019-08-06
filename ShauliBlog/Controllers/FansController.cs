@@ -16,9 +16,27 @@ namespace ShauliBlog.Controllers
         private BlogContext db = new BlogContext();
 
         // GET: Fans
-        public ActionResult Index()
+        public ActionResult Index(string fanGender, string fanName, string clubSeniority)
         {
-            return View(db.Fans.ToList());
+            // Would be much more complex querying the filtered fans straight from 
+            // the DB because the filter parameters can be empty (and we would need query for each case)
+            var fans = from fan in db.Fans
+                       select fan;
+
+            if (!String.IsNullOrEmpty(fanName))
+            {
+                fans = fans.Where(fan => (fan.name.Contains(fanName) || fan.sn.Contains(fanName)));
+            }
+            if (!string.IsNullOrEmpty(fanGender))
+            {
+                fans = fans.Where(fan => fan.gender.ToString() == fanGender);
+            }
+            if (!string.IsNullOrEmpty(clubSeniority))
+            {
+                fans = fans.Where(fan => fan.clubSeniority.ToString() == clubSeniority);
+            }
+
+            return View(fans);
         }
 
         // GET: Fans/Details/5
