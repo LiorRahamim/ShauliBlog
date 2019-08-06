@@ -39,6 +39,7 @@ namespace ShauliBlog.Controllers
             return View(fans);
         }
 
+        [Authorize]
         // GET: Fans/Details/5
         public ActionResult Details(int? id)
         {
@@ -54,12 +55,14 @@ namespace ShauliBlog.Controllers
             return View(fan);
         }
 
+        [Authorize]
         // GET: Fans/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         // POST: Fans/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -77,6 +80,7 @@ namespace ShauliBlog.Controllers
             return View(fan);
         }
 
+        [Authorize]
         // GET: Fans/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -92,6 +96,7 @@ namespace ShauliBlog.Controllers
             return View(fan);
         }
 
+        [Authorize]
         // POST: Fans/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -108,6 +113,7 @@ namespace ShauliBlog.Controllers
             return View(fan);
         }
 
+        [Authorize]
         // GET: Fans/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -123,6 +129,7 @@ namespace ShauliBlog.Controllers
             return View(fan);
         }
 
+        [Authorize]
         // POST: Fans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
