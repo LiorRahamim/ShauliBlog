@@ -79,4 +79,11 @@
             commentsByAuthorData.datasets[0].data.push(data[i].commentsNumber);
         }
     }
+
+
+
+    $.post("/Statistics/CommentsPerPost", function (data) {
+        debugger;
+        console.log(data);
+    });
 </script>
