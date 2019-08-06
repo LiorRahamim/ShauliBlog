@@ -72,10 +72,39 @@ namespace ShauliBlog.Controllers
             var queriedPosts = from c in db.Comments
                         group c by c.PostId into g
                         select new { g.Key, Count = g.Count() };
-            var queriedPost = queriedPosts.OrderByDescending(p => p.Count).First();
-            Post post = db.Posts.Find(queriedPost.Key);
 
-            return View(post);
+            var descendingPost = queriedPosts.OrderByDescending(p => p.Count).ToList();
+            List<Post> posts = new List<Post>();
+
+            foreach (var currentPost in descendingPost)
+            {
+                posts.Add(db.Posts.Find(currentPost.Key));
+            }
+
+            String userName = User.Identity.Name;
+
+            if (userName != null)
+            {
+                int charIndex = userName.IndexOf("@");
+
+                if (charIndex > 0)
+                {
+                    userName = userName.Substring(0, charIndex);
+                }
+
+                List<Post> postsCopy = posts.ToList();
+
+                foreach (Post post in postsCopy)
+                {
+                    if (!IsCommentAuthorExists(post, userName))
+                    {
+                        posts.Remove(post);
+                    }
+                }
+            }
+
+
+            return View(posts);
         }
 
         public ActionResult UpdateTopPost()
