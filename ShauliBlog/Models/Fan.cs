@@ -19,7 +19,7 @@ namespace ShauliBlog.Models
         public string name { get; set; }
 
         [Required]
-        public IEnumerable<Gender> gender { get; set; }
+        public Gender gender { get; set; }
 
         [Required]
         public string city { get; set; }
