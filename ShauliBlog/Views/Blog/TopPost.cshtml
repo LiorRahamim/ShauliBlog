@@ -17,7 +17,8 @@
     <link href="~/Content/11.css" rel="stylesheet" type="text/css" />
 </head>
 
-<h2>Most Commented Post</h2><br />
+<h4>This page shows you the most commented posts, with some added logic.</h4>
+<h4>if you are not loged in it shows the highest commented post, if you are loged in it shows you the highest commented post by you, if the user name match to the author of the comment.</h4><br />
 
 <article class="blogPost" id="blogPost">
     @{Html.RenderPartial("PartialTopPost", Model);}
