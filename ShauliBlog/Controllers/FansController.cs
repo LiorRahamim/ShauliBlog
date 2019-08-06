@@ -1,20 +1,22 @@
-﻿using ShauliBlog.DAL;
-using ShauliBlog.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ShauliBlog.DAL;
+using ShauliBlog.Models;
 
 namespace ShauliBlog.Controllers
 {
-    public class FanClubController : Controller
+    public class FansController : Controller
     {
         private BlogContext db = new BlogContext();
 
-        public ActionResult FanList(string fanGender, string fanName, string clubSeniority)
+        // GET: Fans
+        public ActionResult Index(string fanGender, string fanName, string clubSeniority)
         {
             // Would be much more complex querying the filtered fans straight from 
             // the DB because the filter parameters can be empty (and we would need query for each case)
@@ -27,7 +29,7 @@ namespace ShauliBlog.Controllers
             }
             if (!string.IsNullOrEmpty(fanGender))
             {
-                fans = fans.Where(fan => fan.gender == fanGender);
+                fans = fans.Where(fan => fan.gender.ToString() == fanGender);
             }
             if (!string.IsNullOrEmpty(clubSeniority))
             {
@@ -37,7 +39,9 @@ namespace ShauliBlog.Controllers
             return View(fans);
         }
 
-        public ActionResult FanDetails(int? id)
+        [Authorize]
+        // GET: Fans/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -51,30 +55,34 @@ namespace ShauliBlog.Controllers
             return View(fan);
         }
 
-        /**
-         * Get method - used to display 'createNewFan' page
-         */
-        public ActionResult CreateNewFan()
+        [Authorize]
+        // GET: Fans/Create
+        public ActionResult Create()
         {
             return View();
         }
 
-        /*
-         * Post method - used to actually create the new fan
-         */
+        [Authorize]
+        // POST: Fans/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateNewFan([Bind(Include = "ID,name,sn,gender,birthday,clubSeniority")] Fan fan)
+        public ActionResult Create([Bind(Include = "ID,sn,name,gender,city,birthday,clubSeniority")] Fan fan)
         {
-            db.Fans.Add(fan);
-            db.SaveChanges();
-            return RedirectToAction("FanList");
+            if (ModelState.IsValid)
+            {
+                db.Fans.Add(fan);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(fan);
         }
 
-        /**
-         * Get method - used to display the edit page
-         */
-        public ActionResult EditFan(int? id)
+        [Authorize]
+        // GET: Fans/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -88,22 +96,26 @@ namespace ShauliBlog.Controllers
             return View(fan);
         }
 
-        /**
-         * Post method - used when saving the edited fan
-         */
+        [Authorize]
+        // POST: Fans/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditFan([Bind(Include = "ID,name,sn,gender,birthday,clubSeniority")] Fan fan)
+        public ActionResult Edit([Bind(Include = "ID,sn,name,gender,city,birthday,clubSeniority")] Fan fan)
         {
-            db.Entry(fan).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("FanList");
+            if (ModelState.IsValid)
+            {
+                db.Entry(fan).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(fan);
         }
 
-        /**
-         * Get method - used to display 'deleteFan' confirmation page
-         */
-        public ActionResult DeleteFanDetails(int? id)
+        [Authorize]
+        // GET: Fans/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -117,17 +129,25 @@ namespace ShauliBlog.Controllers
             return View(fan);
         }
 
-        /**
-         * Post method - used when deleting a fan
-         */
-        [HttpPost]
+        [Authorize]
+        // POST: Fans/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteFanDetails(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Fan fan = db.Fans.Find(id);
             db.Fans.Remove(fan);
             db.SaveChanges();
-            return RedirectToAction("FanList");
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

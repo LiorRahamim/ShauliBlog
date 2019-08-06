@@ -1,16 +1,23 @@
 ﻿@model ShauliBlog.Models.Fan
 
 @{
-    ViewBag.Title = "deleteFanDetails";
+    ViewBag.Title = "Details";
 }
 
-<h2>Delete Fan Details</h2>
+<h2>Details</h2>
 
-<h3>You are going to delete fan details, are you sure you want to continue?</h3>
 <div>
     <h4>Fan</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sn)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.name)
         </dt>
@@ -20,18 +27,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.sn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sn)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.gender)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
         </dd>
 
         <dt>
@@ -52,14 +60,7 @@
 
     </dl>
 </div>
-
-<div>
-       @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> 
-        </div>
-        @Html.ActionLink("Back to List", "FanList")
-    }
-</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
