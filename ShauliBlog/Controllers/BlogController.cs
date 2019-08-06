@@ -81,9 +81,10 @@ namespace ShauliBlog.Controllers
                 posts.Add(db.Posts.Find(currentPost.Key));
             }
 
+            Post mostCommentedPost = posts.First();
             String userName = User.Identity.Name;
 
-            if (userName != null)
+            if (userName != "")
             {
                 int charIndex = userName.IndexOf("@");
 
@@ -101,21 +102,60 @@ namespace ShauliBlog.Controllers
                         posts.Remove(post);
                     }
                 }
+
+                if (posts.Count > 0)
+                {
+                    return View(posts.First());
+                }
             }
 
 
-            return View(posts);
+            return View(mostCommentedPost);
         }
 
         public ActionResult UpdateTopPost()
-        {       
+        {
             var queriedPosts = from c in db.Comments
-                        group c by c.PostId into g
-                        select new { g.Key, Count = g.Count() };
-            var queriedPost = queriedPosts.OrderByDescending(p => p.Count).First();
-            Post post = db.Posts.Find(queriedPost.Key);
+                               group c by c.PostId into g
+                               select new { g.Key, Count = g.Count() };
 
-            return PartialView("PartialTopPostView", post);
+            var descendingPost = queriedPosts.OrderByDescending(p => p.Count).ToList();
+            List<Post> posts = new List<Post>();
+
+            foreach (var currentPost in descendingPost)
+            {
+                posts.Add(db.Posts.Find(currentPost.Key));
+            }
+
+            Post mostCommentedPost = posts.First();
+            String userName = User.Identity.Name;
+
+            if (userName != "")
+            {
+                int charIndex = userName.IndexOf("@");
+
+                if (charIndex > 0)
+                {
+                    userName = userName.Substring(0, charIndex);
+                }
+
+                List<Post> postsCopy = posts.ToList();
+
+                foreach (Post post in postsCopy)
+                {
+                    if (!IsCommentAuthorExists(post, userName))
+                    {
+                        posts.Remove(post);
+                    }
+                }
+
+                if (posts.Count > 0)
+                {
+                    return PartialView("PartialTopPostView", posts.First());
+                }
+            }
+
+            return PartialView("PartialTopPostView", mostCommentedPost);           
         }
     }
 }
