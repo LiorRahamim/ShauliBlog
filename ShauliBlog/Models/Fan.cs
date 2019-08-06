@@ -3,6 +3,7 @@ using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace ShauliBlog.Models
 {
@@ -18,7 +19,7 @@ namespace ShauliBlog.Models
         public string name { get; set; }
 
         [Required]
-        public string gender { get; set; }
+        public IEnumerable<Gender> gender { get; set; }
 
         [Required]
         public string city { get; set; }
