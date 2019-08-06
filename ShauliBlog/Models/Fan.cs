@@ -21,6 +21,9 @@ namespace ShauliBlog.Models
         public string gender { get; set; }
 
         [Required]
+        public string city { get; set; }
+
+        [Required]
         public DateTime birthday { get; set; }
 
         [Required]
