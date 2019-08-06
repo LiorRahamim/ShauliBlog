@@ -65,6 +65,26 @@ namespace ShauliBlog.Controllers
 
             ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comment.PostId);
             return View(comment);
-        } 
+        }
+
+        public ActionResult TopPostView()
+        {
+            var posts = from p in db.Comments
+                        group p by p.PostId into g
+                        select new { Key = g.Key, Count = g.Count() };
+
+            Post post = new Post();
+            return View(post);
+        }
+
+        public ActionResult UpdateTopPostView()
+        {       
+            var posts = from p in db.Comments
+                        group p by p.PostId into g
+                        select new { Key = g.Key, Count = g.Count() };
+            var AnoPost = posts.OrderByDescending(p => p.Count).First();
+            Post post = db.Posts.Find(AnoPost.Key);
+            return PartialView("PartialTopPostView", post);
+        }
     }
 }
