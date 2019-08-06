@@ -90,8 +90,6 @@
 
 
     $.post("/Statistics/CommentsPerPost", function (data) {
-        debugger;
-
         var titles = [];
         var counters = [];
         
@@ -123,8 +121,6 @@
                 type: 'doughnut',
                 data: pieData,
             });
-        })
-
-        console.log(data);
+        })        
     });
 </script>
