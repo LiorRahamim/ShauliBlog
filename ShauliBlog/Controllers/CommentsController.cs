@@ -11,6 +11,7 @@ using ShauliBlog.Models;
 
 namespace ShauliBlog.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CommentsController : Controller
     {
         private BlogContext db = new BlogContext();
@@ -51,6 +52,37 @@ namespace ShauliBlog.Controllers
             var PostId = comment.PostId;
             db.Comments.Remove(comment);
             db.SaveChanges();
+            return RedirectToAction("Index", "Comments", new { id = PostId });
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = db.Comments.Find(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comment.PostId);
+            return View(comment);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,PostId,Title,Author,AuthorSite,Content")] Comment comment)
+        {
+            var PostId = comment.PostId;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(comment).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Comments", new { id = PostId });
+            }
+            ViewBag.PostId = new SelectList(db.Posts, "Id", "Title", comment.PostId);
             return RedirectToAction("Index", "Comments", new { id = PostId });
         }
 

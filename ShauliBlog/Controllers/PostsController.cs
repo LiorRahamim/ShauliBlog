@@ -11,6 +11,7 @@ using ShauliBlog.Models;
 
 namespace ShauliBlog.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PostsController : Controller
     {
         private BlogContext db = new BlogContext();
