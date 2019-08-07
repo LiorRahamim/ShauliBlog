@@ -18,7 +18,7 @@ namespace ShauliBlog.DAL
                 new Fan{ID=1, name="Alexander",sn="Choen", city="Tel Aviv", birthday=DateTime.Parse("1992-04-19"), gender=Gender.male, clubSeniority=1},
                 new Fan{ID=2, name="yoni",sn="tzimki", city="Kfar saba", birthday=DateTime.Parse("1998-04-08"), gender=Gender.male, clubSeniority=4},
                 new Fan{ID=3, name="moshe",sn="bruh", city="Herzeliya", birthday=DateTime.Parse("2001-04-03"), gender=Gender.male, clubSeniority=3},
-                new Fan{ID=4, name="ronen",sn="yitzhaki", city="Eliat", birthday=DateTime.Parse("1994-05-07"), gender=Gender.male, clubSeniority=1},
+                new Fan{ID=4, name="ronen",sn="yitzhaki", city="Eilat", birthday=DateTime.Parse("1994-05-07"), gender=Gender.male, clubSeniority=1},
                 new Fan{ID=5, name="roti",sn="Choen", city="Rehovot", birthday=DateTime.Parse("1942-03-01"), gender=Gender.female, clubSeniority=2},
                 new Fan{ID=6, name="smadar",sn="shany", city="Tzur Yigal", birthday=DateTime.Parse("1998-03-03"), gender=Gender.female, clubSeniority=4},
                 new Fan{ID=7, name="yakov",sn="simha", city="Tel Aviv", birthday=DateTime.Parse("1978-08-08"), gender=Gender.male, clubSeniority=4},
