@@ -8,62 +8,99 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
-
-    <script src='https://api.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.1.1/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
     @{
         ViewBag.Title = "MapboxWidget";
     }
+    <style>
+        .marker {
+            background-image: url('../../Images/shaulis_face.png');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
 </head>
 <body>
-
     <div>
         <div id='map' style='width: 216px; height: 300px;'></div>
         <script>
-            mapboxgl.accessToken = 'pk.eyJ1IjoibGlvcnIiLCJhIjoiY2p5b3c3Z3h3MTI1ZTNucGVhdnBmMWhhNyJ9.mHzHCGroVjTZ4eNfmuIEnA';
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
-                zoom: 5,
-                center: [35, 32]
-            });
+            getCitiesCoordinatesFromDb();
 
-            var shaulisAddressCoordinates = [35, 32];
+            function cityToCoordinates(city) {
+                city = city.replace(" ", "%20"); // url doesn't accept spaces
+                city = city.replace(" ", "%20");
+                city = city.replace(" ", "%20");
 
-            $(document).ready(function () {
-                map.on('load', function () {
-                    map.loadImage('/Images/shaulis_face.png', function (error, image) {
-                        if (error) throw error;
-                        map.addImage('shaulisFace', image);
-                        map.addLayer({
-                            "id": "points",
-                            "type": "symbol",
-                            "source": {
-                                "type": "geojson",
-                                "data": {
-                                    "type": "FeatureCollection",
-                                    "features": [{
-                                        "type": "Feature",
-                                        "geometry": {
-                                            "type": "Point",
-                                            "coordinates": shaulisAddressCoordinates
-                                        }
-                                    }]
+                let url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + city + '.json?access_token=pk.eyJ1IjoibGlvcnIiLCJhIjoiY2p5b3c3Z3h3MTI1ZTNucGVhdnBmMWhhNyJ9.mHzHCGroVjTZ4eNfmuIEnA';
+
+                return fetch(url).then(res => res.json()).then((out) => {
+                    return out.features[0].center;
+                }).catch(err => { throw err });
+            }
+
+            function getCitiesCoordinatesFromDb() {
+                var coordinates = [];
+
+                $.post("../../../../Fans/GetFans", function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var tmp = cityToCoordinates(data[i].city);
+                        cityToCoordinates(data[i].city).then(function (result) {
+                            var resultJson =
+                            {
+                                geometry: {
+                                    coordinates: result
                                 }
-                            },
-                            "layout": {
-                                "icon-image": "shaulisFace",
-                                "icon-size": 0.25
                             }
+                            coordinates.push(resultJson);
+
+                            var geojson = {
+                                features: coordinates
+                            };
+
+                            showMarkers(geojson);
                         });
-                    });
+                    }
                 });
-            })
+            }
 
+            function showMarkers(geojson) {
+                mapboxgl.accessToken = 'pk.eyJ1IjoibGlvcnIiLCJhIjoiY2p5b3c3Z3h3MTI1ZTNucGVhdnBmMWhhNyJ9.mHzHCGroVjTZ4eNfmuIEnA';
+                
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/light-v10',
+                    center: [35, 32],
+                    zoom: 5
+                });
 
+                geojson.features.forEach(function (marker) {
+
+                    // create a HTML element for each feature
+                    var el = document.createElement('div');
+                    el.className = 'marker';
+
+                    // make a marker for each feature and add to the map
+                    new mapboxgl.Marker(el)
+                        .setLngLat(marker.geometry.coordinates)
+                        .addTo(map);
+                });
+            }
 
         </script>
-
     </div>
 </body>
 </html>

@@ -39,6 +39,13 @@ namespace ShauliBlog.Controllers
             return View(fans);
         }
 
+        public ActionResult GetFans()
+        {
+            var res = db.Fans;
+
+            return Json(res);
+        }
+
         [Authorize]
         // GET: Fans/Details/5
         public ActionResult Details(int? id)
