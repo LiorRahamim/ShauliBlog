@@ -20,6 +20,7 @@ namespace ShauliBlog.Models
         public string Author { get; set; }
 
         [Required]
+        [DataType(DataType.Url)]
         public string AuthorSite { get; set; }
 
         [Required]
@@ -28,9 +29,9 @@ namespace ShauliBlog.Models
         [Required]
         public string Content { get; set; }
 
-        public String Image { get; set; } // the image should be in the sql server
+        public String Image { get; set; }
         
-        public String Video { get; set; } // the video should be a link to youtube
+        public String Video { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
     }
