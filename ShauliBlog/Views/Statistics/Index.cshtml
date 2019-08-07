@@ -5,8 +5,8 @@
         <table id="commentsByAuthorTable">
             <thead>
                 <tr>
-                    <th>PostTitle</th>
-                    <th>NumOfComments</th>
+                    <th class="col-md-1">Author </th>
+                    <th class="col-md-3">Comments number</th>
                     <th></th>
                 </tr>
             </thead>
@@ -77,8 +77,8 @@
         for (var i = 0; i < data.length; i++) { 
             // Creating a new table row 
             rowsArray.push("<tr>");
-            rowsArray.push("<td>" + data[i].authorName + "</td>");
-            rowsArray.push("<td>" + data[i].commentsNumber + "</td>");
+            rowsArray.push("<td class='col-md-1'>" + data[i].authorName + "</td>");
+            rowsArray.push("<td class='col-md-3'>" + data[i].commentsNumber + "</td>");
             rowsArray.push("</tr>");
 
             // Used when presenting statistics chart
