@@ -24,9 +24,12 @@ namespace ShauliBlog.Controllers
         public ActionResult getCommentsNumberByAuthor()
         {
             var data = from post in db.Posts
-                       join comment in db.Comments on post.Id equals comment.Id
-                       group comment.Id by post.Author into commentsByAuthor
-                       select new { authorName = commentsByAuthor.Key, commentsNumber = commentsByAuthor.Count() };
+                        join comment in db.Comments
+                        on post.Id equals comment.PostId
+                        group post by post.Author into commentsByAuthor
+                        select new { authorName = commentsByAuthor.Key, commentsNumber = commentsByAuthor.Count() };
+
+
             return Json(data);
         }
 
