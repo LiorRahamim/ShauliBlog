@@ -48,6 +48,7 @@ namespace ShauliBlog.Controllers
                 join l in data on p.Id equals l.PostId
                 select new { PostTitle = p.Title, NumberOfComments = l.NumberOfComment };
 
+            res = res.OrderByDescending(p => p.NumberOfComments);
 
             return Json(res);
         }
