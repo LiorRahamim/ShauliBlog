@@ -333,7 +333,7 @@
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Shared\WeatherWidget.cshtml" />
     <Content Include="Views\Shared\TwitterWidget.cshtml" />
-    <Content Include="Views\Shared\MapboxWidget.cshtml" />
+    <Content Include="Views\Fans\MapboxWidget.cshtml" />
     <Content Include="Views\Shared\StatisticsWidget.cshtml" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
